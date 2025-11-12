@@ -1,1 +1,0 @@
-{"root":["./src/app.tsx","./src/main.tsx","./src/types.ts","./src/vite-env.d.ts","./src/data/program.ts","./src/state/storage.ts","./src/utils/parse.ts","./src/utils/time.ts"],"errors":true,"version":"5.9.3"}
