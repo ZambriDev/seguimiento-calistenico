@@ -1,4 +1,4 @@
-// Programa base y variaciones
+// Programa base y variaciones por REPETICIONES
 export const VARIATIONS = {
   "Lagartijas": "Lagartijas declinadas",
   "Lagartijas inclinadas": "Lagartijas declinadas lastradas",

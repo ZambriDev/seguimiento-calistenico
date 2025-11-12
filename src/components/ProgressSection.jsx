@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { computeWeeklyCompletion, computeStreak } from "../lib/progress";
-import { currentMonthKey } from "../lib/date";
-import { emptyMetrics, saveState } from "../lib/storage";
+import { computeWeeklyCompletion, computeStreak } from "../lib/metrics/progressMetrics";
+import { currentMonthKey } from "../lib/utils/dateUtils";
+import { emptyMetrics, saveState } from "../lib/utils/storageUtils";
 
 export default function ProgressSection({ state, setState }) {
   const days = state.days || [];

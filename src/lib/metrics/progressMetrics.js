@@ -1,4 +1,4 @@
-import { todayISO, getWeekStartISO, dayIndexFromDate } from "./date";
+import { todayISO, getWeekStartISO, dayIndexFromDate } from "../utils/dateUtils";
 
 export function computeWeeklyCompletion(days) {
   if (!Array.isArray(days) || days.length === 0) return 0;

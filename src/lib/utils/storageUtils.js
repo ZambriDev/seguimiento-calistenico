@@ -1,26 +1,28 @@
-import { parseReps } from "./reps";
-import { currentMonthKey } from "./date";
-import { WEEK } from "./constants";
+import { WEEK } from "../program/baseProgram";
+import { parseReps } from "./repParser";
+import { currentMonthKey } from "./dateUtils";
 
-export const LS_KEY = "scalist_mvp_v1";
+const LS_KEY = "scalist_mvp_v1";
 
 export function emptyMetrics() {
   return { weight: "", waist: "", chest: "", shoulders: "", comment: "" };
 }
 
-export const defaultState = () => ({
-  days: WEEK.map(day => ({
-    notes: "",
-    completionCount: 0,
-    lastCompletedISO: null,
-    exercises: day.exercises.map(ex => ({
-      label: ex.label,
-      repsRaw: ex.reps,
-      parsed: parseReps(ex.reps),
+export function defaultState() {
+  return {
+    days: WEEK.map((day) => ({
+      notes: "",
+      completionCount: 0,
+      lastCompletedISO: null,
+      exercises: day.exercises.map((ex) => ({
+        label: ex.label,
+        repsRaw: ex.reps,
+        parsed: parseReps(ex.reps),
+      })),
     })),
-  })),
-  metricsByMonth: { [currentMonthKey()]: emptyMetrics() },
-});
+    metricsByMonth: { [currentMonthKey()]: emptyMetrics() },
+  };
+}
 
 export function loadState() {
   try {
@@ -47,6 +49,8 @@ export function loadState() {
     }
 
     const mbm = { ...(data.metricsByMonth || {}) };
+
+    // migración desde legacy metrics
     if (data.metrics) {
       const legacy = data.metrics;
       const mKey = legacy.month || currentMonthKey();
@@ -61,8 +65,8 @@ export function loadState() {
 
     const cm = currentMonthKey();
     if (!mbm[cm]) mbm[cm] = emptyMetrics();
-    next.metricsByMonth = mbm;
 
+    next.metricsByMonth = mbm;
     return next;
   } catch {
     return defaultState();
