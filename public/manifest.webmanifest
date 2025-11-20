@@ -1,0 +1,27 @@
+{
+  "name": "SpiderCalistenic",
+  "short_name": "Calistenic",
+  "start_url": "/SpiderCalistenic/",
+  "scope": "/SpiderCalistenic/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#ef4444",
+  "icons": [
+    {
+      "src": "icons/spider-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/spider-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
